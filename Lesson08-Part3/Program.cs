@@ -49,12 +49,18 @@ namespace Lesson08_Part3
                 } // inner loop
             } // outer loop
 
+
+            // Sort deck of cards by face number and suit
+            // It will be sorted by string order as in 1, 11, 12, 13... 2, 21, 22, etc
+            Array.Sort(deckOfCards);
+
             // display deck of cards
             foreach (string showCard in deckOfCards)
             {
                 Console.WriteLine( showCard );
             }
 
+            
             // Display a random card
             Console.WriteLine();
             Console.WriteLine( "And the random card is..." );
@@ -68,14 +74,12 @@ namespace Lesson08_Part3
             Console.WriteLine( $"You entered: {searchValue}" );
 
             // Search through array to find card
-            while ((deckOfCards[position]) != searchValue && (position < 52))
-            {
-                position++;
-            }
-            Console.WriteLine( position != 52
-                ? $"\nYour card is at position: {position + 1}"
-                : "/nSorry, your card wasn't found! " );
-
+            // Binary search, returns negative value if not found
+            position = Array.BinarySearch(deckOfCards, searchValue);
+            Console.WriteLine( position >= 0
+                ? $"\n Your card is at position: {position + 1}"
+                : "\n Sorry, your card wasn't found! " );
+            
 
             // End of program
             Console.WriteLine(  );
