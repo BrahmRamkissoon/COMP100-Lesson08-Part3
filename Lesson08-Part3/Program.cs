@@ -30,10 +30,8 @@ namespace Lesson08_Part3
             int position = 0;
 
             // Card search variable
-            string searchCard = "";
+            string searchValue = "";
 
-            // Search variable
-            bool cardFound = false;
 
             // Initialize faces array
             for (int index  = 0; index < FACE_NUM; index++)
@@ -66,27 +64,18 @@ namespace Lesson08_Part3
             // Ask the user for a card to find
             Console.WriteLine(  );
             Console.Write( "Which card do you need?" );
-            searchCard = Console.ReadLine();
-            Console.WriteLine( $"You entered: {searchCard}" );
+            searchValue = Console.ReadLine();
+            Console.WriteLine( $"You entered: {searchValue}" );
 
-            // foreach does not keep track of index
-            // Find position fo the card you are searching for
-            foreach (string showCard in deckOfCards)
+            // Search through array to find card
+            while ((deckOfCards[position]) != searchValue && (position < 52))
             {
-                if (showCard == searchCard)
-                {
-                    Console.WriteLine( $"\nYour card is at position: {position + 1}" );
-                    cardFound = true;
-                }
                 position++;
             }
+            Console.WriteLine( position != 52
+                ? $"\nYour card is at position: {position + 1}"
+                : "/nSorry, your card wasn't found! " );
 
-
-            // Output if card not found
-            if ( cardFound == false )
-            {
-                Console.WriteLine("/nSorry, your cant was not found! ");
-            }
 
             // End of program
             Console.WriteLine(  );
