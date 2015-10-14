@@ -27,7 +27,13 @@ namespace Lesson08_Part3
 
             // Card counter
             int card = 0;
+            int position = 0;
 
+            // Card search variable
+            string searchCard = "";
+
+            // Search variable
+            bool cardFound = false;
 
             // Initialize faces array
             for (int index  = 0; index < FACE_NUM; index++)
@@ -46,16 +52,41 @@ namespace Lesson08_Part3
             } // outer loop
 
             // display deck of cards
-            foreach (var i in deckOfCards)
+            foreach (string showCard in deckOfCards)
             {
-                Console.WriteLine( i );
+                Console.WriteLine( showCard );
             }
 
             // Display a random card
             Console.WriteLine();
+            Console.WriteLine( "And the random card is..." );
             randomCardIndex = rnd.Next( 52 );   // get the next random number from the pool
             Console.WriteLine( deckOfCards[randomCardIndex] );
 
+            // Ask the user for a card to find
+            Console.WriteLine(  );
+            Console.Write( "Which card do you need?" );
+            searchCard = Console.ReadLine();
+            Console.WriteLine( $"You entered: {searchCard}" );
+
+            // foreach does not keep track of index
+            // Find position fo the card you are searching for
+            foreach (string showCard in deckOfCards)
+            {
+                if (showCard == searchCard)
+                {
+                    Console.WriteLine( $"\nYour card is at position: {position + 1}" );
+                    cardFound = true;
+                }
+                position++;
+            }
+
+
+            // Output if card not found
+            if ( cardFound == false )
+            {
+                Console.WriteLine("/nSorry, your cant was not found! ");
+            }
 
             // End of program
             Console.WriteLine(  );
