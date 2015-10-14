@@ -15,6 +15,7 @@ namespace Lesson08_Part3
             string[] deckOfCards = new string[52]; // deck of cards
             int card = 0;
 
+
             // Initialize faces array
             for (int index  = 0; index < faces.Length; index++)
             {
@@ -27,12 +28,15 @@ namespace Lesson08_Part3
                 for (int face = 0; face < faces.Length; face++)
                 {
                     deckOfCards[card] = faces[face].ToString() + "of" + suits[suit];
-                    Console.WriteLine( deckOfCards[card] );
                     card++;  // 0 to 51 ( 52 cards )
                 } // inner loop
             } // outer loop
 
-            // shuffle the deck - leave for another day
+            // display deck of cards
+            foreach (var i in deckOfCards)
+            {
+                Console.WriteLine( i );
+            }
 
             Console.WriteLine(  );
             Console.WriteLine( "+++++++++++++++++++++" );
